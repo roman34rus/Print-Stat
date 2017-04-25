@@ -1,0 +1,74 @@
+﻿@model WebUI.Models.Supplies.HistoryViewModel
+
+@{
+    ViewBag.Title = string.Format("История расходных материалов {0}", Model.SupplyName);
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().PrinterId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().PrinterModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().PrinterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().PrinterLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().PrinterOwner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().PrinterComment)
+        </th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(x => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.PrinterId)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.PrinterModel)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.PrinterName)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.PrinterLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.PrinterOwner)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.PrinterComment)
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>

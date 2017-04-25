@@ -1,0 +1,59 @@
+﻿@model WebUI.Models.Printers.IndexViewModel
+
+@{
+    ViewBag.Title = "Принтеры";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(x => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Owner)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Расходники", "Supplies", new { id = item.Id }) |
+            @Html.ActionLink("История", "History", new { id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,19 @@
+﻿@model WebUI.Models.Printers.SuppliesViewModel
+
+@{
+    ViewBag.Title = string.Format("Расходные материалы {0}", Model.PrinterName);
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.SupplyName</td>
+            <td>@Html.ActionLink("Изменить", "SetSupply", new { id = item.SupplySlotId })</td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Вернуться к списку", "Index")

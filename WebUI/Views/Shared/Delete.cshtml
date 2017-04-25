@@ -1,0 +1,26 @@
+﻿@model WebUI.Models.Shared.DeleteViewModel
+
+@{
+    ViewBag.Title = String.Format("Удаление {0}", Model.Name);
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>Вы действительно хотите удалить @Model.Name?</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Name)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку", "Index")
+        </div>
+     </div>
+}

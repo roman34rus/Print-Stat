@@ -1,0 +1,51 @@
+﻿@model WebUI.Models.Supplies.IndexViewModel
+
+@{
+    ViewBag.Title = "Расходные материалы";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Printer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(x => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Printer)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("История", "History", new { id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

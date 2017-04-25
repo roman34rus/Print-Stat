@@ -1,0 +1,50 @@
+﻿@model WebUI.Models.PrinterModels.IndexViewModel
+
+@{
+    ViewBag.Title = "Модели принтеров";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().SuppliesCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().PrintersCount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(x => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.SuppliesCount)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.PrintersCount)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

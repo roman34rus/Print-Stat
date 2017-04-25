@@ -1,0 +1,62 @@
+﻿@model WebUI.Models.Printers.HistoryViewModel
+
+@{
+    ViewBag.Title = string.Format("История расходных материалов {0}", Model.PrinterName);
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().SupplyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().SupplyPartNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().SupplyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Items.FirstOrDefault().SupplyComment)
+        </th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(x => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.SupplyId)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.SupplyPartNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.SupplyName)
+        </td>
+        <td>
+            @Html.DisplayFor(x => item.SupplyComment)
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>
